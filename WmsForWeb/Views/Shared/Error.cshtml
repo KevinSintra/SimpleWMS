@@ -1,0 +1,39 @@
+﻿@model IEnumerable<string>
+@{
+    Layout = null;
+    ViewBag.Title = "Error";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_Error</title>
+</head>
+<body>
+    <h1>網站發生錯誤</h1>
+    <div class="alert alert-danger">
+        <hgroup>
+            @switch (Model.Count())
+            {
+                case 0:
+                    @: 發生了一些錯誤。請在試一次，或聯絡網站管理員。
+                                    break;
+                case 1:
+                    @Model.First();
+                    break;
+                default:
+                    @: 發生了以下錯誤，請確認。
+                    <ul>
+                        @foreach (var item in Model)
+                    {
+                            <li>@item</li>
+                        }
+                    </ul>
+                    break;
+            }
+        </hgroup>
+    </div>
+    @Html.ActionLink("OK", "Index", "IdenHome", null, new { @class = "btn btn-default" })
+</body>
+</html>

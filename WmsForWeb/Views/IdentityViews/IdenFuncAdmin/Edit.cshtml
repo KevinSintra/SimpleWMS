@@ -1,0 +1,67 @@
+﻿@model WmsForWeb.IdentityModels.ViewModels.IdenFuncEdit
+@using System.Linq;
+
+@{
+    ViewBag.Title = "Func Edit";
+}
+
+<h2> Role Name : @Model.Role.Name</h2>
+
+<h4>Func Edit</h4>
+
+@if (Model.AllFunc.Count() != 0)
+{
+    using (Html.BeginForm("EditRoleFunc", "IdenFuncAdmin"))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Add To @Model.Role.Name</div>
+            <table class="table table-striped">
+                <tr>
+                    <th></th>
+                    <th>Func Name</th>
+                    <th></th>
+                    <th>AddFunc</th>
+                    <th>DeleFunc</th>
+                    <th>UpdFunc</th>
+                    <th>SeleFunc</th>
+                </tr>
+                @foreach (var item in Model.AllFunc)
+                {
+                    var data = Model.RoleForFunc.SingleOrDefault(x => x.Func_Id == item.Func_Id);
+                    var data2 = new List<bool>() { true, false };
+                    <tr>
+                        <td>@Html.Hidden("Func_Id", @item.Func_Id)</td>                        
+                        <td>@item.Func_Name @Html.Hidden("Func_Name", @item.Func_Name)</td>
+                        <td>@Html.Hidden("Role_Name", @Model.Role.Name)</td>
+                        @if (!(data is null))
+                        {                            
+                            <td>@Html.DropDownList("AddFunc", new SelectList(data2, data.AddFunc))</td>
+                            <td>@Html.DropDownList("UpdFunc", new SelectList(data2, data.UpdFunc))</td>
+                            <td>@Html.DropDownList("DeleFunc", new SelectList(data2, data.DeleFunc))</td>                            
+                            <td>@Html.DropDownList("SeleFunc", new SelectList(data2, data.SeleFunc))</td>
+                            continue;
+                        }                        
+                        <td>@Html.DropDownList("AddFunc",new SelectList(data2,false))</td>
+                        <td>@Html.DropDownList("UpdFunc", new SelectList(data2, false))</td>
+                        <td>@Html.DropDownList("DeleFunc", new SelectList(data2, false))</td>                        
+                        <td>@Html.DropDownList("SeleFunc", new SelectList(data2, false))</td>
+                        @*<td>@Html.CheckBox("AddFunc", false)</td>
+                        <td>@Html.CheckBox("DeleFunc", false)</td>
+                        <td>@Html.CheckBox("UpdFunc", false)</td>
+                        <td>@Html.CheckBox("SeleFunc", false)</td>*@
+                    </tr>
+                }
+            </table>
+        </div>
+        <div>
+            <input type="submit" value="To Edit Func" class="btn btn-primary" />
+        </div>
+    }
+}
+else
+{
+    <h2> 目前無開放任何功能 </h2>
+}
+

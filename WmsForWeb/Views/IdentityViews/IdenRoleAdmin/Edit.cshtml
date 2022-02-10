@@ -1,0 +1,73 @@
+﻿@model WmsForWeb.IdentityModels.ViewModels.RoleEditModel
+@{
+    ViewBag.Title = "Edit Role";
+}
+
+<h2>Edit Role</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <input name="RoleName" type="hidden" value="@Model.Role.Name" />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <h4>RoleEditModel</h4>
+    <hr />
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Add To @Model.Role.Name</div>
+            @*針對該VIEW稍作說明 : 若Controller 對應的不管是 DataModel 或是 其它參數，對於 網頁前端請求
+                網頁前端可用模型資料打出強行別的資料，但是網頁前端產生的Html只會是元素標籤，那根據傳輸法則那參數名稱要對應
+                到Html標籤的name值，若對應不到則會抱錯。*@
+            <table class="table table-striped">
+                @*若該權限擁有全部的使用者*@
+                @if (Model.NonMnebers.Count() == 0)
+                {
+                    <tr><td colspan="2">All Users Are Members</td></tr>
+                }
+                else
+                {
+                    <tr>
+                        <th>User ID</th>
+                        <th>Add to Role</th>
+                    </tr>
+                    foreach (var user in Model.NonMnebers)
+                    {
+                        <tr>
+                            <td>@user.UserName</td>
+                            <td><input name="IdsToAdd" type="checkbox" value="@user.Id" /></td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">Remove from @Model.Role.Name</div>
+            <table class="table table-striped">
+                @if (Model.Members.Count() == 0)
+                {
+                    <tr><td colspan="2">No Users Are Members</td></tr>
+                }
+                else
+                {
+                    <tr>
+                        <th>User ID</th>
+                        <th>Remove From Role</th>
+                    </tr>
+                    foreach (var user in Model.Members)
+                    {
+                        <tr>
+                            <td>@user.UserName</td>
+                            <td><input name="IdsToDelete" type="checkbox" value="@user.Id" /></td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+        <div>
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

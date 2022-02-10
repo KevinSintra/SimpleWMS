@@ -1,0 +1,67 @@
+﻿@model IEnumerable<WmsAllModels.WmsModels.GoodMastBarcode>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.GoodsMast.PdCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Barcode_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EaBoxCase)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Barcode)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PdCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Barcode_Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EaBoxCase)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Barcode)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit",
+                    new { pdId = item.Pd_Id, pdCode = item.PdCode, Barcode = item.Barcode }) |
+                @Html.ActionLink("Delete", "Delete",
+                    new { pdId = item.Pd_Id, pdCode = item.PdCode, Barcode = item.Barcode })
+            </td>
+            <td></td>
+        </tr>
+    }
+</table>
+            
+<p>
+    @Html.ActionLink("新增條碼", "Create",
+    new { pdId = ViewBag.createUsePdId, pdCode = ViewBag.createUsePdCode })
+</p>
+
+@*@using (Html.BeginForm("Create", "GoodMastBarcodes"))
+{
+    <div class="row">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="新增條碼" class="btn btn-default" />
+        </div>
+    </div>
+}*@

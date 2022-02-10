@@ -1,0 +1,90 @@
+﻿@model WmsAllModels.WmsModels.GoodMastBarcode
+
+@{
+    ViewBag.Title = "Create";
+    var creatPdid =  (int)ViewBag.createUsePdId;
+    var createPdcode = (string)ViewBag.createUsePdCode;
+    //Model.Pd_Id = creatPdid;
+    //Model.PdCode = createPdcode;
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>GoodMastBarcode</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.Hidden("Pd_Id", creatPdid)
+        @Html.Hidden("PdCode", createPdcode)
+
+        <h5>PdCode: @createPdcode</h5>
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.Pd_Id, "Pd_Id", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Pd_Id", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Pd_Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PdCode, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PdCode, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PdCode, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EaBoxCase, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@{
+                    //var str = new List<string> { "", "Ea", "Box", "Case" };
+                    IEnumerable<SelectListItem> list = new List<SelectListItem> {
+                        new SelectListItem {
+                             Text="無選擇", Value="",Selected=true
+                        },
+                        new SelectListItem {
+                            Text="個",Value="Ea"
+                        },
+                        new SelectListItem {
+                            Text="盒",Value="Box"
+                        },
+                        new SelectListItem {
+                            Text="箱",Value="Case"
+                        }
+                    };
+                }*@
+                @Html.EnumDropDownListFor(model => model.EaBoxCase, htmlAttributes: new { @class = "form-control" })
+                @*@Html.EditorFor(model => model.EaBoxCase, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.ValidationMessageFor(model => model.EaBoxCase, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Barcode, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Barcode, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Barcode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+
+    </div>
+}
+
+<div>
+    @Html.ActionLink("返回", "Index",
+                    new { pdId = creatPdid, pdCode = createPdcode },
+                    new { @class = "btn btn-danger btn-xs" })
+</div>

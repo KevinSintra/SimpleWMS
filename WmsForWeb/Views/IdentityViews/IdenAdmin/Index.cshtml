@@ -1,0 +1,54 @@
+﻿@model IEnumerable<WmsForWeb.IdentityModels.AppUser>
+
+<h2>User Accounts</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th></th>
+    </tr>
+    @if (Model.Count() == 0)
+    {
+        <tr><td colspan="3" class="text-center">No User Accounts</td></tr>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItme => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @*在VIEW中可以隨時地引入 @using (Html.BeginForm(){} 達到任意組合之需求*@
+                    @*以下範例就是 Delete是用 POST，但是 Edit 就是使用 GET 該模式可以活用以達到精簡Controller中的程式碼 *@
+                    @using (Html.BeginForm("Delete", "IdenAdmin", new { id = item.Id }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btn-xs" })
+                        <button class="btn btn-danger btn-xs" type="submit"> Delete </button>
+                    }
+                </td>
+
+            </tr>
+        }
+    }
+</table>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+</p>

@@ -1,0 +1,256 @@
+﻿@model WmsAllModels.WmsModels.FangGoodsMast
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>FangGoodsMast</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PdCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PdCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PdName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PdName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeleteFlag)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeleteFlag)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AllowDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AllowDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CaseQty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CaseQty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BoxQty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BoxQty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CaseQty_Level)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CaseQty_Level)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HightLevel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HightLevel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PickStock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PickStock)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PdLength)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PdLength)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PdWidth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PdWidth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PdHeight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PdHeight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PdVolume)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PdVolume)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PdWeight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PdWeight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TemperatureLayer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TemperatureLayer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PdSort)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PdSort)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StopSell)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StopSell)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LowestSellDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LowestSellDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Supplier_1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Supplier_1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Replenish_Online)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Replenish_Online)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Replenish_Reserve)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Replenish_Reserve)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CostPriceAve)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostPriceAve)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastInPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastInPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SuggestPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SuggestPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SuggestPriceAve)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SuggestPriceAve)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SellPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SellPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SellPriceAve)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SellPriceAve)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UpdTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UpdUser)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

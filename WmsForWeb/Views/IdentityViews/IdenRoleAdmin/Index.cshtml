@@ -1,0 +1,72 @@
+﻿@model IEnumerable<WmsForWeb.IdentityModels.AppRole>
+@using WmsForWeb.IdentityInfrastructure.IdenHtmlHelp;
+
+@{
+    ViewBag.Title = "Roles Index";
+}
+
+<h2>Roles Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Users)
+        </th>
+        <th></th>
+    </tr>
+    @if (Model.Count() == 0)
+    {
+        <tr><td colspan="4" class="text-center">No Roles</td></tr>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @if (item.Users.Count == 0 || item.Users == null)
+                    {
+                        <P>該權限還未新增使用者</P>
+                    }
+                    else
+                    {
+                        <P>@string.Join(",", item.Users.Select(x => Html.GetUserName(x.UserId)))</P>
+                    }
+                </td>
+                <td>
+                    @using (Html.BeginForm("Delete", "IdenRoleAdmin", new { id = item.Id }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btn-xs" })
+                        <input type="submit" value="Delete" class="btn btn-danger btn-xs" />
+                    }
+                </td>
+                <td>
+                    @*@Html.RenderAction("Edit", "IdenFuncAdmin")*@
+                    @using (Html.BeginForm("Edit", "IdenFuncAdmin", new { inRoleId = item.Id }))
+                    {
+                        @Html.AntiForgeryToken()
+                        
+                        <input type="submit" value="Edit Func" class="btn btn-danger btn-xs" />
+                    }
+                </td>
+            </tr>
+        }
+    }
+</table>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+</p>

@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WmsFuncIdentityDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="WmsFunucMast">
+          <Key>
+            <PropertyRef Name="Func_Id" />
+          </Key>
+          <Property Name="Func_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Func_Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WmsRoleFuncMast">
+          <Key>
+            <PropertyRef Name="Func_Id" />
+            <PropertyRef Name="Func_Name" />
+            <PropertyRef Name="Role_Name" />
+          </Key>
+          <Property Name="Func_Id" Type="int" Nullable="false" />
+          <Property Name="Func_Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Role_Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="AddFunc" Type="bit" Nullable="false" />
+          <Property Name="DeleFunc" Type="bit" Nullable="false" />
+          <Property Name="UpdFunc" Type="bit" Nullable="false" />
+          <Property Name="SeleFunc" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_WmsRoleFuncMast_dbo_WmsFunucMast_ID">
+          <End Role="WmsFunucMast" Type="Self.WmsFunucMast" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WmsRoleFuncMast" Type="Self.WmsRoleFuncMast" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WmsFunucMast">
+              <PropertyRef Name="Func_Id" />
+            </Principal>
+            <Dependent Role="WmsRoleFuncMast">
+              <PropertyRef Name="Func_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WmsFuncIdentityDbModelStoreContainer">
+          <EntitySet Name="WmsFunucMast" EntityType="Self.WmsFunucMast" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WmsRoleFuncMast" EntityType="Self.WmsRoleFuncMast" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_WmsRoleFuncMast_dbo_WmsFunucMast_ID" Association="Self.FK_dbo_WmsRoleFuncMast_dbo_WmsFunucMast_ID">
+            <End Role="WmsFunucMast" EntitySet="WmsFunucMast" />
+            <End Role="WmsRoleFuncMast" EntitySet="WmsRoleFuncMast" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WmsFuncIdentityDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="WmsFunucMast">
+          <Key>
+            <PropertyRef Name="Func_Id" />
+          </Key>
+          <Property Name="Func_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Func_Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="WmsRoleFuncMast" Relationship="Self.FK_dbo_WmsRoleFuncMast_dbo_WmsFunucMast_ID" FromRole="WmsFunucMast" ToRole="WmsRoleFuncMast" />
+        </EntityType>
+        <EntityType Name="WmsRoleFuncMast">
+          <Key>
+            <PropertyRef Name="Func_Id" />
+            <PropertyRef Name="Func_Name" />
+            <PropertyRef Name="Role_Name" />
+          </Key>
+          <Property Name="Func_Id" Type="Int32" Nullable="false" />
+          <Property Name="Func_Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Role_Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AddFunc" Type="Boolean" Nullable="false" />
+          <Property Name="DeleFunc" Type="Boolean" Nullable="false" />
+          <Property Name="UpdFunc" Type="Boolean" Nullable="false" />
+          <Property Name="SeleFunc" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="WmsFunucMast" Relationship="Self.FK_dbo_WmsRoleFuncMast_dbo_WmsFunucMast_ID" FromRole="WmsRoleFuncMast" ToRole="WmsFunucMast" />
+        </EntityType>
+        <Association Name="FK_dbo_WmsRoleFuncMast_dbo_WmsFunucMast_ID">
+          <End Role="WmsFunucMast" Type="Self.WmsFunucMast" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WmsRoleFuncMast" Type="Self.WmsRoleFuncMast" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WmsFunucMast">
+              <PropertyRef Name="Func_Id" />
+            </Principal>
+            <Dependent Role="WmsRoleFuncMast">
+              <PropertyRef Name="Func_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WmsFuncIdentityDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="WmsFunucMast" EntityType="Self.WmsFunucMast" />
+          <EntitySet Name="WmsRoleFuncMast" EntityType="Self.WmsRoleFuncMast" />
+          <AssociationSet Name="FK_dbo_WmsRoleFuncMast_dbo_WmsFunucMast_ID" Association="Self.FK_dbo_WmsRoleFuncMast_dbo_WmsFunucMast_ID">
+            <End Role="WmsFunucMast" EntitySet="WmsFunucMast" />
+            <End Role="WmsRoleFuncMast" EntitySet="WmsRoleFuncMast" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WmsFuncIdentityDbModelStoreContainer" CdmEntityContainer="WmsFuncIdentityDbEntities">
+          <EntitySetMapping Name="WmsFunucMast">
+            <EntityTypeMapping TypeName="WmsFuncIdentityDbModel.WmsFunucMast">
+              <MappingFragment StoreEntitySet="WmsFunucMast">
+                <ScalarProperty Name="Func_Id" ColumnName="Func_Id" />
+                <ScalarProperty Name="Func_Name" ColumnName="Func_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WmsRoleFuncMast">
+            <EntityTypeMapping TypeName="WmsFuncIdentityDbModel.WmsRoleFuncMast">
+              <MappingFragment StoreEntitySet="WmsRoleFuncMast">
+                <ScalarProperty Name="Func_Id" ColumnName="Func_Id" />
+                <ScalarProperty Name="Func_Name" ColumnName="Func_Name" />
+                <ScalarProperty Name="Role_Name" ColumnName="Role_Name" />
+                <ScalarProperty Name="AddFunc" ColumnName="AddFunc" />
+                <ScalarProperty Name="DeleFunc" ColumnName="DeleFunc" />
+                <ScalarProperty Name="UpdFunc" ColumnName="UpdFunc" />
+                <ScalarProperty Name="SeleFunc" ColumnName="SeleFunc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

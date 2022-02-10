@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WmsAllModels", "WmsAllModels\WmsAllModels.csproj", "{6D960027-ABEB-4092-85A9-9C88E466FB35}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WmsForWeb", "WmsForWeb\WmsForWeb.csproj", "{56EAC9AE-5929-4D2E-BA62-E52225B1C636}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6D960027-ABEB-4092-85A9-9C88E466FB35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D960027-ABEB-4092-85A9-9C88E466FB35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D960027-ABEB-4092-85A9-9C88E466FB35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D960027-ABEB-4092-85A9-9C88E466FB35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56EAC9AE-5929-4D2E-BA62-E52225B1C636}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56EAC9AE-5929-4D2E-BA62-E52225B1C636}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56EAC9AE-5929-4D2E-BA62-E52225B1C636}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56EAC9AE-5929-4D2E-BA62-E52225B1C636}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AEF2CE88-8ECC-464E-B087-99FC3281A81B}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://fang-ji:8080/tfs/defaultcollection2
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = WmsAllModels\\WmsAllModels.csproj
+		SccProjectName1 = WmsAllModels
+		SccLocalPath1 = WmsAllModels
+		SccProjectUniqueName2 = WmsForWeb\\WmsForWeb.csproj
+		SccProjectName2 = WmsForWeb
+		SccLocalPath2 = WmsForWeb
+	EndGlobalSection
+EndGlobal

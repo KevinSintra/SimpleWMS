@@ -1,0 +1,233 @@
+﻿@model IEnumerable<WmsAllModels.WmsModels.FangGoodsMast>
+@using WmsAllModels.WmsModels
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Search", "FangGoodsMast"))
+{
+    <div class="row">
+        <div class="col-md-4">
+            <h4>品號: <input Name="inPdCode" type="text" /></h4>
+        </div>
+        <div class="col-md-4">
+            <h4>品名: <input Name="inPdName" type="text" /></h4>
+        </div>
+        @*<div class="col-md-4">
+            <h4>
+                溫層: @Html.DropDownList("inPdTemperatureLayer", new SelectList(Enum.GetNames(typeof(TemperatureLayer)),TemperatureLayer.預設))
+            </h4>
+        </div>*@
+    </div>
+    <div>
+        <input type="submit" value="To Search" class="btn btn-primary" />
+    </div>
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PdCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PdName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeleteFlag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AllowDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CaseQty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BoxQty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CaseQty_Level)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HightLevel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PickStock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PdLength)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PdWidth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PdHeight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PdVolume)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PdWeight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TemperatureLayer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PdSort)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StopSell)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LowestSellDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Supplier_1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Replenish_Online)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Replenish_Reserve)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.CostPriceAve)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastInPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SuggestPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SuggestPriceAve)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SellPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SellPriceAve)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdUser)
+            </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PdCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PdName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeleteFlag)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AllowDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CaseQty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BoxQty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CaseQty_Level)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HightLevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PickStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PdLength)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PdWidth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PdHeight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PdVolume)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PdWeight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TemperatureLayer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PdSort)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StopSell)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LowestSellDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Supplier_1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Replenish_Online)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Replenish_Reserve)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.CostPriceAve)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastInPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SuggestPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SuggestPriceAve)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SellPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SellPriceAve)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdUser)
+                </td>*@
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Pd_Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Pd_Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Pd_Id })
+
+                @Html.ActionLink("管理條碼", "Index", "GoodMastBarcodes",
+                    new { pdId = item.Pd_Id, pdCode = item.PdCode },
+                    new { @class = "btn btn-danger btn-xs" })
+                @*@using (Html.BeginForm("Index", "GoodMastBarcodes",
+                        new { pdId = item.Pd_Id, pdCode = item.PdCode }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <input type="submit" value="Edit Barcode" class="btn btn-danger btn-xs" />
+                    }*@
+            </td>
+        </tr>
+    }
+
+</table>
